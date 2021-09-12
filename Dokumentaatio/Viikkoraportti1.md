@@ -11,7 +11,9 @@ Tiran materiaaleja ja surffasin netissä. Tutustuin niin A* ja IDA*:aan,
 jälkimmäinen ei ihan täysin kyllä avautunut.  
 
 ## Miten ohjelma edistynyt?
-Sain Githubin luotua ja toimimaan, projektia en vielä, katsotaan ehdinkö vielä. 
+Sain Githubin luotua ja toimimaan.  
+Sain projektin luotua Netbeansiin vaikkei siellä mitään hienoa vielä ole.
+Gradlen suostuu ajamaan komentoriviltä. 
 
 ## Mitä opin tällä viikolla?
 Tirasta on tovi joten ensinnäkin muistui mieleen ylipäätään konteksti   
@@ -43,6 +45,7 @@ buukata konsultointiajan kuullakseni olenko ihan hakoteillä :)
 * Ja tietty, miten se IDA* oikeasti toimii Javalla? 
 
 *ToDo seuraavaksi:*
+* Projektin buildiin lisättävä kaikki tarvittava.
 * Pelilaudan visuaalinen ilme
 * Alkutilanteen generoiminen satunnaisesti. 
 * State-olio
@@ -50,6 +53,7 @@ buukata konsultointiajan kuullakseni olenko ihan hakoteillä :)
 ## Ajankäyttö
 
 | pvm | tunnit | mitä tehty |
+|:----:|:----:|:-----:|
 | 9.9. | 2 | tirakertaus |
 | 10.9. | 3 | pohjien tekoa, Github, dokumentoinnin aloitus |
 | 12.9. | 3 | n-puzzle googlaus |
