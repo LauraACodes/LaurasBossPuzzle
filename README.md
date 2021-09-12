@@ -2,9 +2,9 @@
 
 ## Viikkoraportit
 
-[Viikko 1](https://github.com/LauraACodes/LaurasBozzPuzzle/blob/main/Dokumentaatio/Viikkoraportti1.md)
+[Viikko 1](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti1.md)
 
 ## Muut dokumentit
 
-[Määrittelydokumentti](https://github.com/LauraACodes/LaurasBozzPuzzle/blob/main/Dokumentaatio/Maarittelydokumentti.md)
+[Määrittelydokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Maarittelydokumentti.md)
 
