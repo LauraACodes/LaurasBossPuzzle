@@ -23,7 +23,7 @@ public class Tukitoimet {
         };
              
         Random random = new Random();        
-        for (int i=0; i<50; i++) {
+        for (int i = 0; i < 50; i++) {
             ArrayList<Integer> mahdollisetSiirrot = selvitaMahdSiirrot(sijainnit);
             int valittu = random.nextInt(mahdollisetSiirrot.size());
             int siirtoNro = mahdollisetSiirrot.get(valittu);
@@ -34,14 +34,14 @@ public class Tukitoimet {
         return puzzle;
     }
     
-    public ArrayList<Integer> selvitaMahdSiirrot(int[][] sijainnit) {
+    public static ArrayList<Integer> selvitaMahdSiirrot(int[][] sijainnit) {
         ArrayList<Integer> siirrot = new ArrayList<>();
         // 1=ylös, 2=alas, 3=oikea, 4=vasuri
-        if (sijainnit[16][1] > 0){
+        if (sijainnit[16][1] > 0) {
             siirrot.add(1);
         }
         
-        if (sijainnit[16][1] < 3){
+        if (sijainnit[16][1] < 3) {
             siirrot.add(2);
         }
 
@@ -64,27 +64,27 @@ public class Tukitoimet {
         
         //ylös
         if (siirtoNro == 1) {
-            int siirtyva = puzzle[tyhjaX][(tyhjaY-1)];
+            int siirtyva = puzzle[tyhjaX][(tyhjaY - 1)];
             uudetSijainnit[siirtyva][1] = tyhjaY;
-            uudetSijainnit[16][1] = (tyhjaY-1);
+            uudetSijainnit[16][1] = (tyhjaY - 1);
         }
         //alas
         if (siirtoNro == 2) {
-            int siirtyva = puzzle[tyhjaX][(tyhjaY+1)];
+            int siirtyva = puzzle[tyhjaX][(tyhjaY + 1)];
             uudetSijainnit[siirtyva][1] = tyhjaY;
-            uudetSijainnit[16][1] = (tyhjaY+1);
+            uudetSijainnit[16][1] = (tyhjaY + 1);
         }
         //oikealle
         if (siirtoNro == 3) {
-            int siirtyva = puzzle[(tyhjaX)+1][tyhjaY];
+            int siirtyva = puzzle[(tyhjaX) + 1][tyhjaY];
             uudetSijainnit[siirtyva][0] = tyhjaX;
-            uudetSijainnit[16][0] = (tyhjaX+1);
+            uudetSijainnit[16][0] = (tyhjaX + 1);
         }        
         //vasuriin
         if (siirtoNro == 4) {
-            int siirtyva = puzzle[(tyhjaX)-1][tyhjaY];
+            int siirtyva = puzzle[(tyhjaX) - 1][tyhjaY];
             uudetSijainnit[siirtyva][0] = tyhjaX;
-            uudetSijainnit[16][0] = (tyhjaX-1);
+            uudetSijainnit[16][0] = (tyhjaX - 1);
         }  
      
         return uudetSijainnit;
@@ -93,7 +93,7 @@ public class Tukitoimet {
     public int[][] paivitaPuzzle(int[][] sijainnit) {
         int[][] uusiPuzzle = new int[4][4];
         
-        for (int i=1 ; i<=16; i++) {
+        for (int i = 1 ; i <= 16; i++) {
             int x = sijainnit[i][0];
             int y = sijainnit[i][1];
             uusiPuzzle[x][y] = i;
