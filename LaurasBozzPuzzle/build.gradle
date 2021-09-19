@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'jacoco'
+//    id 'jacoco'
     id 'checkstyle'
 }
 
@@ -12,19 +12,21 @@ repositories {
 }
 
 dependencies {
-  //implementation('org.junit.jupiter:junit-jupiter:5.4.2')
-  testImplementation('org.junit.jupiter:junit-jupiter:5.4.2')
+    testImplementation 'junit:junit:4.13'
+    implementation 'com.google.guava:guava:29.0-jre'
+    //implementation('org.junit.jupiter:junit-jupiter:5.4.2')
+    //testImplementation('org.junit.jupiter:junit-jupiter:5.4.2')
 }
 
 test {
     useJUnit()
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-}
+//jacocoTestReport {
+//    reports {
+//        xml.enabled = true
+//        html.enabled = true
+//    }
+//}
 
-check.dependsOn jacocoTestReport
+//check.dependsOn jacocoTestReport

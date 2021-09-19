@@ -5,7 +5,6 @@
 	   <module name="ConstantName"/>
 	   <module name="WhitespaceAround"/>
 	   <module name="NeedBraces"/>
-	   <module name="AvoidStarImport"/>
 	   <module name="UnusedImports"/>
 	   <module name="MethodLength"/>
 	   <module name="LeftCurly"/>

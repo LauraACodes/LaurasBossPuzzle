@@ -5,7 +5,7 @@ Sain omaan päähän taottua miten IDA toimii ja miten ohjelma kannattaa rakenta
 Sain tehtyä palojen shufflen, eli aloitustilanteen. Koodi ei ihan parhainta vielä, tähän palaan.
 Tarkoituksena oli tehdä testit koodaamilleni asioille mutta jostain syystä netbeans (tai gradle  
 komentoriviltä) ei suostu niitä ajamaan. Aluksi oli liian vanha gradle-versio, nyt ilmeisesti  
-liian uusi. Järki lähtee. 
+liian uusi. Järki lähtee. **TÄMÄ SAATU KORJATTUA SUNNUNTAINA!**
 Checkstylepohjat jne. laitoin myös kuntoon.  
 
 ## Miten ohjelma edistynyt?
@@ -18,12 +18,12 @@ Sen, että toteutus onnistuu tehokkaammin ilman, että tiloista tekee omia olioi
 Ja hyödyllisenä kertauksena juttuja yksikkötestauksesta, checkstyleistä jne. 
 
 ## Mikä jäi epäselväksi?
-Mikä gradle.buildissa tai muualla on väärin kun testit ei pyöri?! **SAA VINKATA!**
+Mikä gradle.buildissa tai muualla on väärin kun testit ei pyöri?! **SUNNUNTAINA SAATIIN TOIMIMAAN**
 
 ## Mitä teen seuraavaksi?
 
 *ToDo seuraavaksi:*
-* Testit pitää saada toimimaan. Pitäisikö kopioida joku toimiva vanha gradle-projekti ja siirtää koodi sinne...?
+* Testit pitää saada toimimaan. *DONE*
 * Manhattan-etäisyyksien laskemisen koodaus.
 * Idan koodaus.
 * Pelilaudan visuaalinen ilme. JavaFX?

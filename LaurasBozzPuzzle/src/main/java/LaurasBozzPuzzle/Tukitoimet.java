@@ -102,7 +102,8 @@ public class Tukitoimet {
         return uusiPuzzle;
     }
     
-        public static void tulostaPuzzle(int[][] puzzle) {
+    // Tämä on apuna kun tarkastelen miten ohjelma toimii
+    public static void tulostaPuzzle(int[][] puzzle) {
             
         StringBuilder stringB = new StringBuilder("");
         for (int i = 0; i <= 16; i++) {
