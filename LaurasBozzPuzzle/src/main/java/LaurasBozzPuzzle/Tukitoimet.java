@@ -25,23 +25,17 @@ public class Tukitoimet {
         return puzzle;
     }
     
-    public int laskeManhattan(int[][] puzzle) {
+    public static int laskeManhattan(int[][] puzzle) {
         int etaisyys = 0;
         
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
                 int palanArvo = puzzle[x][y];
-                /*System.out.println("etäisyys alussa = " + etaisyys);
-                System.out.println("x, y = " + x + "," + y);
-                System.out.println("PalanArvo = " + palanArvo);
-                System.out.println("Haetaan tavoitekoordinaatti on: x " + Vakiot.TAVOITEKOORD[palanArvo][0] + ", y=" + Vakiot.TAVOITEKOORD[palanArvo][1]);
-                System.out.println("xn erotus = " + Math.abs(x - Vakiot.TAVOITEKOORD[palanArvo][0]));*/
+                //Tässä on virhe!
                 int xnEro = Math.abs(x - Vakiot.TAVOITEKOORD[palanArvo][0]);
                 int ynEro = Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]);
                 etaisyys = etaisyys + xnEro + ynEro;
-                /*System.out.println("yn erotus = " + Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]));
-                //etaisyys = etaisyys + Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]);
-                System.out.println("etaisyys = " + etaisyys);*/
+
             }
         }
         
@@ -61,8 +55,8 @@ public class Tukitoimet {
         return true;
     }
         
-    public ArrayList<Integer> selvitaMahdSiirrot(int[][] puzzle) {
-        //etsitään tyhja = 16. Saisiko tän tuotua suoraan? Vähintään omaksi metodiksi..     
+    public static ArrayList<Integer> selvitaMahdSiirrot(int[][] puzzle) {
+
         int[] tyhjanXY= palautaTyhja(puzzle);
         int tyhjanX = tyhjanXY[0];
         int tyhjanY = tyhjanXY[1];
@@ -87,65 +81,10 @@ public class Tukitoimet {
         
         return siirrot;
     }
- /*
-    public ArrayList<Integer> selvitaMahdSiirrot(int[][] sijainnit) {
-        ArrayList<Integer> siirrot = new ArrayList<>();
-        // 1=ylös, 2=alas, 3=oikea, 4=vasuri
-        if (sijainnit[16][1] > 0) {
-            siirrot.add(1);
-        }
-        
-        if (sijainnit[16][1] < 3) {
-            siirrot.add(2);
-        }
-
-        if (sijainnit[16][0] < 3) {
-            siirrot.add(3);
-        }
-        
-        if (sijainnit[16][0] > 0) {
-            siirrot.add(4);
-        }
-        
-        return siirrot;
-    }    
-    public int[][] teeSiirto(int[][] sijainnit, int[][] puzzle, int siirtoNro) {
-        int[][] uudetSijainnit = sijainnit;
-        int tyhjaX = sijainnit[16][0];
-        int tyhjaY = sijainnit[16][1];
-     
-        
-        //ylös
-        if (siirtoNro == 1) {
-            int siirtyva = puzzle[tyhjaX][(tyhjaY - 1)];
-            uudetSijainnit[siirtyva][1] = tyhjaY;
-            uudetSijainnit[16][1] = (tyhjaY - 1);
-        }
-        //alas
-        if (siirtoNro == 2) {
-            int siirtyva = puzzle[tyhjaX][(tyhjaY + 1)];
-            uudetSijainnit[siirtyva][1] = tyhjaY;
-            uudetSijainnit[16][1] = (tyhjaY + 1);
-        }
-        //oikealle
-        if (siirtoNro == 3) {
-            int siirtyva = puzzle[(tyhjaX) + 1][tyhjaY];
-            uudetSijainnit[siirtyva][0] = tyhjaX;
-            uudetSijainnit[16][0] = (tyhjaX + 1);
-        }        
-        //vasuriin
-        if (siirtoNro == 4) {
-            int siirtyva = puzzle[(tyhjaX) - 1][tyhjaY];
-            uudetSijainnit[siirtyva][0] = tyhjaX;
-            uudetSijainnit[16][0] = (tyhjaX - 1);
-        }  
-     
-        return uudetSijainnit;
-    }*/
-    public int[] palautaTyhja(int[][] puzzle) {
+ 
+    public static int[] palautaTyhja(int[][] puzzle) {
         int[] tyhjanXY = new int[2];
 
-        //etsitään tyhja = 16. Saisiko tän tuotua suoraan? Vähintään omaksi metodiksi..
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
                 if (puzzle[x][y] == 16) {
@@ -199,34 +138,6 @@ public class Tukitoimet {
         return uusiPuzzle;
     }    
     
-    public int[][] paivitaPuzzle(int[][] sijainnit) {
-        int[][] uusiPuzzle = new int[4][4];
-        
-        for (int i = 1 ; i <= 16; i++) {
-            int x = sijainnit[i][0];
-            int y = sijainnit[i][1];
-            uusiPuzzle[x][y] = i;
-        }
-        
-        return uusiPuzzle;
-    }
-    
-    
-    public int[][] paivitaSijainnit(int[][] puzzle) {
-        int[][] uudetSijainnit = new int[17][2];
-        
-        for (int i = 0 ; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                int x = puzzle[i][j];
-                uudetSijainnit[x][0] = i;
-                uudetSijainnit[x][1] = j;
-            }
-        }
-        
-        return uudetSijainnit;
-    }
-    
-    
     // Tämä on apuna kun tarkastelen miten ohjelma toimii
     public void tulostaPuzzle(int[][] puzzle) {
         StringBuilder stringB = new StringBuilder("");
@@ -240,5 +151,28 @@ public class Tukitoimet {
             }
         }
         System.out.println(stringB);
+    }
+    
+    public static int laskeInversiot(int[][] puzzle) {
+        int[] taulukko = new int[15];
+        int n = 0;
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                if (puzzle[x][y] != 16) {
+                    taulukko[n] = puzzle[x][y];
+                    n++;
+                }
+            }
+        }
+              
+        int inversiot = 0;
+            for (int i = 0; i < 15; i++) {  
+                for (int j = 0; j < 15; j++) {
+                    if (i < j && taulukko[j] < taulukko[i]) {
+                        inversiot++;
+                    }
+                }
+            }
+        return inversiot;        
     }
 }
