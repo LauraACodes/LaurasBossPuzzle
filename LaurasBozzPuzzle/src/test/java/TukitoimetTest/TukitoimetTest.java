@@ -1,6 +1,7 @@
 package TukitoimetTest;
 
 import LaurasBozzPuzzle.Tukitoimet;
+import LaurasBozzPuzzle.Vakiot;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,7 +20,7 @@ public class TukitoimetTest {
         this.tukitoimi = new Tukitoimet();
         this.sijainnit = new int[17][2];
     }
-  
+  /*
     @Test
     public void osaaSelvittaaJosSiirtoYLOSMahdollinen() {
         sijainnit[16][0] = 0;
@@ -83,4 +84,24 @@ public class TukitoimetTest {
         ArrayList<Integer> mahdSiirrot = Tukitoimet.selvitaMahdSiirrot(sijainnit);
         assertFalse(mahdSiirrot.contains(4));    
     }
+    
+    @Test
+    public void josLahtokohtanaOnRatkaisuManhattanPalauttaaNolla() {
+        int etaisyys = Tukitoimet.laskeManhattan(Vakiot.TAVOITEKOORD);
+        assertEquals(0, etaisyys);
+    }
+
+    @Test
+    public void josPuuttuuVainYksiSiirtoManhattanPalauttaaYksi() {
+        int[][] annetutSijainnit = {
+            {100,100},
+            {0,0},{1,0},{2,0},{3,0},
+            {0,1},{1,1},{2,1},{3,1},
+            {0,2},{1,2},{2,2},{3,2},  
+            {0,3},{1,3},{3,3},{2,3}
+        };
+        
+        int etaisyys = Tukitoimet.laskeManhattan(annetutSijainnit);
+        assertEquals(2, etaisyys);
+    }*/
 }
