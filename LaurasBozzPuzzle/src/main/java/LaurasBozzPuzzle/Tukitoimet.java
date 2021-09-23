@@ -31,7 +31,7 @@ public class Tukitoimet {
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
                 int palanArvo = puzzle[x][y];
-                //Tässä on virhe!
+                //Tässä on vikaa jossain..
                 int xnEro = Math.abs(x - Vakiot.TAVOITEKOORD[palanArvo][0]);
                 int ynEro = Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]);
                 etaisyys = etaisyys + xnEro + ynEro;
