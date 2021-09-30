@@ -32,10 +32,11 @@ public class Tukitoimet {
             for (int y = 0; y < 4; y++) {
                 int palanArvo = puzzle[x][y];
                 //Tässä on vikaa jossain..
-                int xnEro = Math.abs(x - Vakiot.TAVOITEKOORD[palanArvo][0]);
-                int ynEro = Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]);
-                etaisyys = etaisyys + xnEro + ynEro;
-
+                if (palanArvo != 16) {
+                    int xnEro = Math.abs(x - Vakiot.TAVOITEKOORD[palanArvo][0]);
+                    int ynEro = Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]);
+                    etaisyys = etaisyys + xnEro + ynEro;
+                }
             }
         }
         

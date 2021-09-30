@@ -203,7 +203,7 @@ public class TukitoimetTest {
     }
 
     @Test
-    public void josPuuttuuVainYksiSiirtoManhattanPalauttaaKaksi() {
+    public void josPuuttuuVainYksiSiirtoManhattanPalauttaaYksi() {
         int[][] puzzle = {
             {1,2,3,4}, 
             {5,6,7,8}, 
@@ -212,7 +212,7 @@ public class TukitoimetTest {
         };
         
         int etaisyys = Tukitoimet.laskeManhattan(puzzle);
-        assertEquals(2, etaisyys);
+        assertEquals(1, etaisyys);
     }
     
     @Test
