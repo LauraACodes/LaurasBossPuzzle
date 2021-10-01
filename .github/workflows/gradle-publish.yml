@@ -18,5 +18,7 @@ jobs:
     - name: Grant execute permission for gradle
       run: chmod +x ./LaurasBozzPuzzle/gradlew
     - name: Test with Gradle
-      run: ./LaurasBozzPuzzle/gradlew test
+      working-directory: ./LaurasBozzPuzzle
+      run: gradlew test
+      
 
