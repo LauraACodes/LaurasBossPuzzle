@@ -1,5 +1,5 @@
 
-package LaurasBozzPuzzle;
+package LaurasBossPuzzle.LaskentaJaTuki;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -26,6 +26,9 @@ public class Laskenta {
         return ratkaisu;
     }
     
+    public int[][] otaPinosta() {
+        return (int[][]) pino.pollLast();
+    }
     public int idaStar(int[][] puzzle) {
 
         int rajaArvo = tukitoimet.laskeManhattan(puzzle);
@@ -36,7 +39,7 @@ public class Laskenta {
             int paluu = etsi(pino, 0, rajaArvo);
      
             if (paluu == 0) {
-                return pino.size();
+                return pino.size() - 1;
             }
             
             if (paluu == 1000) {

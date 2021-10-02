@@ -1,5 +1,9 @@
 
-package LaurasBozzPuzzle;
+package LaurasBozzPuzzle.ui;
+
+import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
+import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
+import LaurasBossPuzzle.LaskentaJaTuki.Laskenta;
 
 
 public class Main {
@@ -12,13 +16,13 @@ public class Main {
         tulostaPuzzle(Vakiot.TAVOITETILA);
               
         System.out.println("Generoitu lähtötilanne:");
-        int[][] puzzle = {
+        /*int[][] puzzle = {
             {1,2,3,4}, 
             {5,6,16,8}, 
             {9,10,7,12}, 
             {13,14,11,15}
-        };
-        //int[][] puzzle = tukitoimet.luoPuzzleSekoittamalla();
+        };*/
+        int[][] puzzle = tukitoimet.luoPuzzleSekoittamalla();
         tulostaPuzzle(puzzle);        
        
         
@@ -28,6 +32,11 @@ public class Main {
         
         int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;
         System.out.println("Mooveja yht:" + liikkeidenLkm);
+        
+        for (int i=0; i<liikkeidenLkm+1; i++) {
+            int[][] vaihe = laskenta.otaPinosta();
+            tulostaPuzzle(vaihe);            
+        }
         
                
     }

@@ -1,5 +1,5 @@
 
-package LaurasBozzPuzzle;
+package LaurasBossPuzzle.LaskentaJaTuki;
 
 import java.util.ArrayList;
 import java.util.Random;

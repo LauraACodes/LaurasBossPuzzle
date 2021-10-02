@@ -1,5 +1,5 @@
 
-package LaurasBozzPuzzle;
+package LaurasBossPuzzle.LaskentaJaTuki;
 
 public class Vakiot {
     

@@ -1,8 +1,8 @@
 
 package LaskentaTest;
 
-import LaurasBozzPuzzle.Laskenta;
-import LaurasBozzPuzzle.Tukitoimet;
+import LaurasBossPuzzle.LaskentaJaTuki.Laskenta;
+import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class LaskentaTest {
             {13,14,11,15}
         };
         
-        int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;
+        int liikkeidenLkm = laskenta.idaStar(puzzle);
         assertEquals(3, liikkeidenLkm);
     }
 }
