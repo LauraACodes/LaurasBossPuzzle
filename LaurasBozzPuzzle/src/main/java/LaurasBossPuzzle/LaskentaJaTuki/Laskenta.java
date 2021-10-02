@@ -8,30 +8,29 @@ import java.util.Iterator;
 
 public class Laskenta {
     
-    Tukitoimet tukitoimet;
     ArrayDeque pino;
-    Boolean ratkaisu;
     
     public Laskenta() {
-        this.tukitoimet = new Tukitoimet();
         this.pino = new ArrayDeque<int[][]>();
-        this.ratkaisu = false;
     }
     
-    public ArrayDeque<int[][]> getPino() {
-        return pino;
-    }
-    
-    public Boolean getRatkaisu() {
-        return ratkaisu;
-    }
-    
+    /**
+     * Metodi palauttaa ja poistaa pinon viimeisimmän puzzlen eli vanhimman pelitilanteen
+     * @return pinon alimmainen puzzle eli pelitilanne
+     */ 
     public int[][] otaPinosta() {
         return (int[][]) pino.pollLast();
     }
+    
+    /**
+     * Metodi toteuttaa IDA* algoritmin eli selvittää lyhimmän ratkaisun 
+     * hyödyntäen Manhattan-etäisyyksiä.   
+     * @param puzzle
+     * @return miten monta siirtoa lyhin ratkaisu tarvitsee
+     */
     public int idaStar(int[][] puzzle) {
 
-        int rajaArvo = tukitoimet.laskeManhattan(puzzle);
+        int rajaArvo = Tukitoimet.laskeManhattan(puzzle);
         System.out.println("eka manhattan = " + rajaArvo);
         pino.add(puzzle);
         
@@ -51,32 +50,49 @@ public class Laskenta {
         
     }
     
+    /**
+     * Metodi toteuttaa käytännössä syvyyshaun. Se siis laskee annetun pinon 
+     * päällimmäisen puzzlen kokonaiskustannuksen ja toimii sen perusteella:
+     * Jos kokonaiskustannus on suurempi kuin annettu raja-arvo (eli optimaalinen
+     * ratkaisu ei voi löytyä tästä haarasta), metodi palauttaa kokonaiskustannuksen. 
+     * Jos pinon päällimmäinen on ongelman ratkaisu, metodi palauttaa nollan.
+     * Muutoin metodi selvittää pinon päällimmäisen mahdolliset siirrot ja tekee 
+     * ne yksitellen (toki tarkastaen ensin, ettei siirto johda jo vierailtuun 
+     * pelitilanteeseen). Metodi siis laittaa siirron jälkeisen pelitilanteen
+     * pinoon ja kutsuu itseään. Jos paluuarvona on nolla, ratkaisu on löytynyt.
+     * Muutoin metodi palauttaa kutsutun tilanteen (lapsen) kokonaiskustannuksen 
+     * poistettuaan lapsen ensin pinosta.
+     * @param pino
+     * @param kustannus
+     * @param rajaArvo
+     * @return pinon päällimmäisen kokonaiskustanuksen, nollan tai pienimmän 
+     * seuraavien mahdollisten siirtojen kokonaiskustannuksen. 
+     */
     public int etsi(ArrayDeque<int[][]> pino, int kustannus, int rajaArvo) {
        
-        int kokonaisKustannus = kustannus + tukitoimet.laskeManhattan(pino.peek());
+        int kokonaisKustannus = kustannus + Tukitoimet.laskeManhattan(pino.peek());
 
         if (kokonaisKustannus > rajaArvo) {
             return kokonaisKustannus;
         }
         
-        if (tukitoimet.onkoSama(pino.peek(), Vakiot.TAVOITETILA)) {
-            ratkaisu = true;
+        if (Tukitoimet.onkoSama(pino.peek(), Vakiot.TAVOITETILA)) {
             return 0; // löytyi
         }
         
         int min = 1000;
         
-        ArrayList<Integer> siirrot = tukitoimet.selvitaMahdSiirrot(pino.peek());
+        ArrayList<Integer> siirrot = Tukitoimet.selvitaMahdSiirrot(pino.peek());
              
         for (int i: siirrot) {
 
-            int[][] seuraajaNode = tukitoimet.teeSiirto(pino.peek(), i);
+            int[][] seuraajaNode = Tukitoimet.teeSiirto(pino.peek(), i);
             
             boolean eiOleJoPinossa = true;
             
             Iterator<int[][]> iterointi = pino.iterator();
             while (iterointi.hasNext()) {
-                if (tukitoimet.onkoSama(iterointi.next(), seuraajaNode)) {
+                if (Tukitoimet.onkoSama(iterointi.next(), seuraajaNode)) {
                     eiOleJoPinossa = false;
                 }
             }
@@ -87,7 +103,6 @@ public class Laskenta {
                 int paluu = etsi(pino, kustannus + 1, rajaArvo);
 
                 if (paluu == 0) {
-                    ratkaisu = true;
                     return 0;
                 }
 
@@ -106,17 +121,4 @@ public class Laskenta {
         
     }
 
-    public void tulostaPuzzle(int[][] puzzle) {
-        StringBuilder stringB = new StringBuilder("");
-        for (int i = 0; i < puzzle.length; i++) {
-            for (int j = 0; j < puzzle.length; j++) {
-                stringB.append(puzzle[i][j]);
-                stringB.append(" ");
-                if (j == 3) {
-                    stringB.append("\n");
-                }
-            }
-        }
-        System.out.println(stringB);
-    }
 }

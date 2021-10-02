@@ -4,9 +4,19 @@ package LaurasBossPuzzle.LaskentaJaTuki;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Tukitoimet-luokka tarjoaa Laskennan tarvitsemat työkalut,
+ * mm luo puzzlen, selvittää mitkä siirrot ovat mahdollisia ja laskee herustiikat.
+ */
 public class Tukitoimet {
-
-    public int[][] luoPuzzleSekoittamalla() {
+    
+/**
+ * Metodi luo uuden Puzzlen sekoittamalla eli metodin luomilla puzzleilla on 
+ * aina ratkaisu.
+ * 
+ * @return sekoittamalla luodun puzzlen 
+ */
+    public static int[][] luoPuzzleSekoittamalla() {
         int[][] puzzle = {
             {1,2,3,4}, 
             {5,6,7,8}, 
@@ -25,13 +35,19 @@ public class Tukitoimet {
         return puzzle;
     }
     
+    /**
+     * Metodi laskee parametrinä annetun tilanteen (puzzlen) Manhattan etäisyyden.
+     * 
+     * @param puzzle
+     * @return Manhattan etäisyys
+     */
     public static int laskeManhattan(int[][] puzzle) {
         int etaisyys = 0;
         
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
                 int palanArvo = puzzle[x][y];
-                //Tässä on vikaa jossain..
+
                 if (palanArvo != 16) {
                     int xnEro = Math.abs(x - Vakiot.TAVOITEKOORD[palanArvo][0]);
                     int ynEro = Math.abs(y - Vakiot.TAVOITEKOORD[palanArvo][1]);
@@ -42,8 +58,15 @@ public class Tukitoimet {
         
         return etaisyys;
     }
- 
-    public boolean onkoSama(int[][] puzzle1, int[][] puzzle2) {
+    
+    /**
+     * Metodi vertailee kahta tilannetta (puzzle), ovatko ne samat.
+     * 
+     * @param puzzle1
+     * @param puzzle2
+     * @return false jos eivät ole samat, true jos ovat samat
+     */
+    public static boolean onkoSama(int[][] puzzle1, int[][] puzzle2) {
         
         for (int x = 0; x < 4; x++) {
             for (int y = 0; y < 4; y++) {
@@ -55,7 +78,14 @@ public class Tukitoimet {
         
         return true;
     }
-        
+
+    /**
+     * Metodi luo listan parametrinä annetun puzzlen mahdollisista siirroista
+     * (1=ylös, 2=alas, 3=oikea, 4=vasuri).
+     * 
+     * @param puzzle
+     * @return lista mahdollisista siirroista
+     */
     public static ArrayList<Integer> selvitaMahdSiirrot(int[][] puzzle) {
 
         int[] tyhjanXY= palautaTyhja(puzzle);
@@ -63,7 +93,7 @@ public class Tukitoimet {
         int tyhjanY = tyhjanXY[1];
         
         ArrayList<Integer> siirrot = new ArrayList<>();
-        // 1=ylös, 2=alas, 3=oikea, 4=vasuri
+
         if (tyhjanX > 0) {
             siirrot.add(1);
         }
@@ -83,6 +113,11 @@ public class Tukitoimet {
         return siirrot;
     }
  
+    /**
+     * Metodi etsii annetusta puzzlesta tyhjän ruudun (16) koordinaatit.
+     * @param puzzle
+     * @return tyhjän ruudun koordinaatit yksiulotteisena taulukkona.
+     */
     public static int[] palautaTyhja(int[][] puzzle) {
         int[] tyhjanXY = new int[2];
 
@@ -97,7 +132,14 @@ public class Tukitoimet {
         
         return tyhjanXY;
     }
-    public int[][] teeSiirto(int[][] puzzle, int siirtoNro) {
+    
+    /**
+     * Metodi tekee pyydetyn siirron annettuun puzzleen.
+     * @param puzzle
+     * @param siirtoNro
+     * @return puzzle, johon on tehty pyydetty siirto
+     */
+    public static int[][] teeSiirto(int[][] puzzle, int siirtoNro) {
         int[][] uusiPuzzle = new int[4][4];
         
         for (int x = 0; x < 4; x++) {
@@ -138,22 +180,13 @@ public class Tukitoimet {
      
         return uusiPuzzle;
     }    
-    
-    // Tämä on apuna kun tarkastelen miten ohjelma toimii
-    public void tulostaPuzzle(int[][] puzzle) {
-        StringBuilder stringB = new StringBuilder("");
-        for (int i = 0; i < puzzle.length; i++) {
-            for (int j = 0; j < puzzle.length; j++) {
-                stringB.append(puzzle[i][j]);
-                stringB.append(" ");
-                if (j == 3) {
-                    stringB.append("\n");
-                }
-            }
-        }
-        System.out.println(stringB);
-    }
-    
+
+    /**
+     * Metodi laskee annetun puzzlen inversiot. Metodia voidaan käyttää kun 
+     * tarkestellaan onko puzzlella ratkaisua vai ei.
+     * @param puzzle
+     * @return annetun puzzlen inversioiden määrä
+     */
     public static int laskeInversiot(int[][] puzzle) {
         int[] taulukko = new int[15];
         int n = 0;
@@ -175,5 +208,6 @@ public class Tukitoimet {
                 }
             }
         return inversiot;        
-    }
+    }    
+
 }

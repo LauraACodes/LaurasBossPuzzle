@@ -12,7 +12,6 @@ import org.junit.Test;
 public class LaskentaTest {
     
     Laskenta laskenta;
-    Tukitoimet tukitoimi;
     
     public LaskentaTest() {
     }
@@ -20,7 +19,6 @@ public class LaskentaTest {
     
     @Before
     public void setUp() {
-        this.tukitoimi = new Tukitoimet();
         this.laskenta = new Laskenta();
     }
     

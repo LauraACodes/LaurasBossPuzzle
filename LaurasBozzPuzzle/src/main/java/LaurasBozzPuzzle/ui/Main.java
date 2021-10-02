@@ -16,28 +16,19 @@ public class Main {
         tulostaPuzzle(Vakiot.TAVOITETILA);
               
         System.out.println("Generoitu lähtötilanne:");
-        /*int[][] puzzle = {
-            {1,2,3,4}, 
-            {5,6,16,8}, 
-            {9,10,7,12}, 
-            {13,14,11,15}
-        };*/
         int[][] puzzle = tukitoimet.luoPuzzleSekoittamalla();
-        tulostaPuzzle(puzzle);        
-       
+        tulostaPuzzle(puzzle);   
         
-        int manhattan = tukitoimet.laskeManhattan(puzzle);
-        System.out.println("Manhattan = " + manhattan);
-        Laskenta laskenta = new Laskenta();
+        System.out.println("Lyhimmän reitin siirrot:");
+        Laskenta laskenta = new Laskenta();    
         
-        int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;
-        System.out.println("Mooveja yht:" + liikkeidenLkm);
-        
-        for (int i=0; i<liikkeidenLkm+1; i++) {
+        int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;               
+        for (int i=0; i<liikkeidenLkm+2; i++) {
             int[][] vaihe = laskenta.otaPinosta();
             tulostaPuzzle(vaihe);            
-        }
-        
+        }    
+
+        System.out.println("MSiirtoja yhteensä:" + liikkeidenLkm);        
                
     }
     

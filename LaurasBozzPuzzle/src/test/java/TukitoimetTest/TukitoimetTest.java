@@ -8,15 +8,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 public class TukitoimetTest {
-    
-    Tukitoimet tukitoimi;
-    
+        
     public TukitoimetTest() {
-    }
-    
-    @Before
-    public void setUp() {
-        this.tukitoimi = new Tukitoimet();
     }
   
     @Test
@@ -131,9 +124,9 @@ public class TukitoimetTest {
             {9,14,15,13}
         };
         
-        int[][] siirretty = tukitoimi.teeSiirto(puzzleAlussa, 1);
+        int[][] siirretty = Tukitoimet.teeSiirto(puzzleAlussa, 1);
         
-        assertTrue(tukitoimi.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
+        assertTrue(Tukitoimet.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
     }
 
     @Test
@@ -151,9 +144,9 @@ public class TukitoimetTest {
             {4,14,15,13}
         };
         
-        int[][] siirretty = tukitoimi.teeSiirto(puzzleAlussa, 2);
+        int[][] siirretty = Tukitoimet.teeSiirto(puzzleAlussa, 2);
         
-        assertTrue(tukitoimi.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
+        assertTrue(Tukitoimet.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
     }
 
     @Test
@@ -171,9 +164,9 @@ public class TukitoimetTest {
             {4,14,15,13}
         };
         
-        int[][] siirretty = tukitoimi.teeSiirto(puzzleAlussa, 3);
+        int[][] siirretty = Tukitoimet.teeSiirto(puzzleAlussa, 3);
         
-        assertTrue(tukitoimi.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
+        assertTrue(Tukitoimet.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
     } 
     
     @Test
@@ -191,9 +184,9 @@ public class TukitoimetTest {
             {4,14,15,13}
         };
         
-        int[][] siirretty = tukitoimi.teeSiirto(puzzleAlussa, 4);
+        int[][] siirretty = Tukitoimet.teeSiirto(puzzleAlussa, 4);
         
-        assertTrue(tukitoimi.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
+        assertTrue(Tukitoimet.onkoSama(siirretty, puzzlenTulisiOllaLopussa));    
     } 
         
     @Test
@@ -225,16 +218,16 @@ public class TukitoimetTest {
             {13,16,14,15}
         };
         
-        int inv = tukitoimi.laskeInversiot(puzzle);
+        int inv = Tukitoimet.laskeInversiot(puzzle);
         assertEquals(3, inv);
             
     }
     
     @Test
     public void puzzlenLuontiPalauttaaPuzzlenJollaRatkaisu() {
-        int[][] luotuPuzzle = tukitoimi.luoPuzzleSekoittamalla(); 
-        int inv = tukitoimi.laskeInversiot(luotuPuzzle);
-        int[] tyhjanXY = tukitoimi.palautaTyhja(luotuPuzzle);
+        int[][] luotuPuzzle = Tukitoimet.luoPuzzleSekoittamalla(); 
+        int inv = Tukitoimet.laskeInversiot(luotuPuzzle);
+        int[] tyhjanXY = Tukitoimet.palautaTyhja(luotuPuzzle);
         boolean onkoRatkaisu = false;
         if ((tyhjanXY[0] == 1 | tyhjanXY[0] == 3) && inv % 2 == 0) {
             onkoRatkaisu = true;
@@ -249,13 +242,13 @@ public class TukitoimetTest {
     
     @Test
     public void palauttaaTrueJosPuzzletOnSamat() {
-        int[][] luotuPuzzle = tukitoimi.luoPuzzleSekoittamalla(); 
-        assertTrue(tukitoimi.onkoSama(luotuPuzzle, luotuPuzzle));
+        int[][] luotuPuzzle = Tukitoimet.luoPuzzleSekoittamalla(); 
+        assertTrue(Tukitoimet.onkoSama(luotuPuzzle, luotuPuzzle));
     }
     
     @Test
     public void palauttaaFalseJosPuzzletOnEri() {
-        int[][] luotuPuzzle = tukitoimi.luoPuzzleSekoittamalla(); 
-        assertFalse(tukitoimi.onkoSama(luotuPuzzle, Vakiot.TAVOITETILA));
+        int[][] luotuPuzzle = Tukitoimet.luoPuzzleSekoittamalla(); 
+        assertFalse(Tukitoimet.onkoSama(luotuPuzzle, Vakiot.TAVOITETILA));
     }
 }
