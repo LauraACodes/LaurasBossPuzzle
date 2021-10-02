@@ -5,7 +5,7 @@ plugins {
     id 'checkstyle'
 }
 
-mainClassName = 'LaurasBozzPuzzle.ui.Main'
+mainClassName = 'LaurasBozzPuzzle.ui/Main'
 
 repositories {
     mavenCentral()
