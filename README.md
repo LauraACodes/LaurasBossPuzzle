@@ -14,3 +14,5 @@
 
 [Testausdokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Testausdokumentti.md)
 
+
+https://github.com/LauraACodes/LaurasBossPuzzle/workflows/Java%20CI%20with%20Gradle/badge.svg
