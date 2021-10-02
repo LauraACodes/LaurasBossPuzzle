@@ -19,12 +19,13 @@ muodot. Sen, että 15-puzzleilla on max 80 siirtoa.
 Edelleen tuo, miten oikeasti voisin testata sitä ratkaisun oikeellisuutta (muutoin kuin antamalla 
 jonkun laudan (jonka ratkaisun tietää) testattavaksi). Yritin etsiä jotain teoriaa mutta en  
 toistaiseksi löytänyt.
+Ja se, *tuleeko tuo ArrayDeque korvata omalla tietorakenteella?*
 
 ## Mitä teen seuraavaksi?
 
 *ToDo seuraavaksi:*
+* Dokumentointikimara, testausdokumentti, toteutusdokumentti, määrittelydokumentti...
 * Jatka sen selvittämistä, miten IDAn tuloksen oikeellisuuden voi testata.
-* Panosta testausdokumenttiin.
 * Lisää ajanotto.
 * Pelilaudan visuaalinen ilme. JavaFX? Tai ehkä vain komentoriviltä käytettävä ui... :I
 * Muut heuristiikat kuin Manhattan.
@@ -34,6 +35,6 @@ toistaiseksi löytänyt.
 
 | pvm | tunnit | mitä tehty |
 |:----:|:----:|:-----:|
-| 19.9. | 5 | testit toimimaan, jee! |
-| 21.9. | 6 | idan ohjelmointi |
-| 23.9. | 7 | koodin siivous, ida toimimaan, testejä, dokumentointia |
+| 30.9. | 2 | testit toimimaan, jee! |
+| 1.10. | 2 | idan ohjelmointi |
+| 2.10. | 6 | koodin siivous, javadocia, dokumentointia |
