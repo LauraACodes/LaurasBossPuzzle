@@ -21,6 +21,7 @@ jobs:
       working-directory: ./LaurasBozzPuzzle
       run: ./gradlew test
     - name: Code coverage raport
+      working-directory: ./LaurasBozzPuzzle
       run: ./gradlew jacocoTestReport
     - name: Data to codecov
       run: bash <(curl -s https://codecov.io/bash)
