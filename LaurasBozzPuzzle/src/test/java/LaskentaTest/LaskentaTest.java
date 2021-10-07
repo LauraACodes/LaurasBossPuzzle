@@ -34,6 +34,19 @@ public class LaskentaTest {
         int liikkeidenLkm = laskenta.idaStar(puzzle);
         assertEquals(3, liikkeidenLkm);
     }
+
+    @Test
+    public void loytaaLyhimmanVaikeampiCase() {
+        int[][] puzzle = {
+            {5,1,2,4}, 
+            {16,6,3,7}, 
+            {9,10,11,8}, 
+            {13,14,15,12}
+        };
+        
+        int liikkeidenLkm = laskenta.idaStar(puzzle);
+        assertEquals(7, liikkeidenLkm);
+    }
     
     @Test
     public void ratkaisuEiTuhannellaYrityksellaOleYli80() {

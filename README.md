@@ -8,6 +8,10 @@
 
 [Viikko 3](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti3.md)
 
+[Viikko 4](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti4.md)
+
+[Viikko 5](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti5.md)
+
 ## Muut dokumentit
 
 [Määrittelydokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Maarittelydokumentti.md)

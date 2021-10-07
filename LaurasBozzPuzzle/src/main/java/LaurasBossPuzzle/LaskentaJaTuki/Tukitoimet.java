@@ -2,6 +2,7 @@
 package LaurasBossPuzzle.LaskentaJaTuki;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -25,7 +26,7 @@ public class Tukitoimet {
         };
                    
         Random random = new Random();        
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 200; i++) {
             ArrayList<Integer> mahdollisetSiirrot = selvitaMahdSiirrot(puzzle);
             int valittu = random.nextInt(mahdollisetSiirrot.size());
             int siirtoNro = mahdollisetSiirrot.get(valittu);
@@ -34,6 +35,45 @@ public class Tukitoimet {
         
         return puzzle;
     }
+    
+    /**
+     * Tämä luo Puzzlen satunnaisesti, EI TOIMI VIELÄ
+     * @return 
+     */
+    public static int[][] luoPuzzleSatunnaisesti() {
+        int[][] puzzle = new int[4][4];
+        
+        ArrayList<Integer> lista = new ArrayList<>();
+        for (int i = 1; i < 17; i++) {
+            lista.add(i);
+        }
+        
+        Collections.shuffle(lista);
+        
+        //Joo-o, tästä toteutuksesta voi antaa moukkua. Aivot jumittui juuri.
+        puzzle[0][0] = lista.get(0);
+        puzzle[0][1] = lista.get(1);    
+        puzzle[0][2] = lista.get(2);
+        puzzle[0][3] = lista.get(3); 
+        
+        puzzle[1][0] = lista.get(4);
+        puzzle[1][1] = lista.get(5);    
+        puzzle[1][2] = lista.get(6);
+        puzzle[1][3] = lista.get(7); 
+        
+        puzzle[2][0] = lista.get(8);
+        puzzle[2][1] = lista.get(9);    
+        puzzle[2][2] = lista.get(10);
+        puzzle[2][3] = lista.get(11); 
+        
+        puzzle[3][0] = lista.get(12);
+        puzzle[3][1] = lista.get(13);    
+        puzzle[3][2] = lista.get(14);
+        puzzle[3][3] = lista.get(15); 
+              
+        return puzzle;
+    }
+  
     
     /**
      * Metodi laskee parametrinä annetun tilanteen (puzzlen) Manhattan etäisyyden.
@@ -208,6 +248,27 @@ public class Tukitoimet {
                 }
             }
         return inversiot;        
-    }    
+    }   
+    /**
+     * Metodi tarkastaa, onko parametrina annettu puzzle ratkaistavissa.
+     * @param puzzle
+     * @return true jos puzzle on ratkaistavissa, false jos ei. 
+     */
+    public static boolean loytyykoRatkaisu(int[][] puzzle) {
+        boolean ratkaisuLoytyy = false;
+        
+        int inv = laskeInversiot(puzzle);
+        int[] tyhjanXY = palautaTyhja(puzzle);
+
+        if ((tyhjanXY[0] == 1 | tyhjanXY[0] == 3) && inv % 2 == 0) {
+            ratkaisuLoytyy = true;
+        }
+        
+        if ((tyhjanXY[0] == 0 | tyhjanXY[0] == 2) && inv % 2 != 0) {
+            ratkaisuLoytyy = true;
+        }        
+        
+        return ratkaisuLoytyy;
+    }
 
 }
