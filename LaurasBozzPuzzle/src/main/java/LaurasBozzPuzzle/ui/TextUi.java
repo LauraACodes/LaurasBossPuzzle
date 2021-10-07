@@ -49,13 +49,17 @@ public class TextUi {
         System.out.println("Lyhimmän reitin siirrot:");
         Laskenta laskenta = new Laskenta();    
         
+        long ajanottoAlkaa = System.nanoTime();
         int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;               
+        long ajanottoLoppuu = System.nanoTime();
+        long kestoMs = (ajanottoLoppuu - ajanottoAlkaa) / 1000000;
         /*for (int i=0; i<liikkeidenLkm+2; i++) {
             int[][] vaihe = laskenta.otaPinosta();
             tulostaPuzzle(vaihe);            
         } */  
-
+        
         System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
+        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");
                
     }
     
