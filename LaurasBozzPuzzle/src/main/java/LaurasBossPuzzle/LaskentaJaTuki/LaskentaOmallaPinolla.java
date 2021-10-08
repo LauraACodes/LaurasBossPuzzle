@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class Laskenta {
+public class LaskentaOmallaPinolla {
     
-    ArrayDeque pino;
+    Pino pino;
     
-    public Laskenta() {
-        this.pino = new ArrayDeque<int[][]>();
+    public LaskentaOmallaPinolla() {
+        this.pino = new Pino();
     }
     
     /**
@@ -19,7 +19,7 @@ public class Laskenta {
      * @return pinon alimmainen puzzle eli pelitilanne
      */ 
     public int[][] otaPinosta() {
-        return (int[][]) pino.pollLast();
+        return (int[][]) pino.pollPaallimmainen();
     }
     
     /**
@@ -32,13 +32,13 @@ public class Laskenta {
 
         int rajaArvo = Tukitoimet.laskeManhattan(puzzle);
         System.out.println("eka manhattan = " + rajaArvo);
-        pino.add(puzzle);
+        pino.lisaaPinoon(puzzle);
         
         while (true) {
             int paluu = etsi(pino, 0, rajaArvo);
      
             if (paluu == 0) {
-                return pino.size() - 1;
+                return pino.viimeisenIndeksi - 1;
             }
             
             if (paluu == 1000) {
@@ -68,37 +68,38 @@ public class Laskenta {
      * @return pinon päällimmäisen kokonaiskustanuksen, nollan tai pienimmän 
      * seuraavien mahdollisten siirtojen kokonaiskustannuksen. 
      */
-    public int etsi(ArrayDeque<int[][]> pino, int kustannus, int rajaArvo) {
+    public int etsi(Pino pino, int kustannus, int rajaArvo) {
        
-        int kokonaisKustannus = kustannus + Tukitoimet.laskeManhattan(pino.peek());
+        int kokonaisKustannus = kustannus + Tukitoimet.laskeManhattan(pino.peekPaallimmainen());
 
         if (kokonaisKustannus > rajaArvo) {
             return kokonaisKustannus;
         }
         
-        if (Tukitoimet.onkoSama(pino.peek(), Vakiot.TAVOITETILA)) {
+        if (Tukitoimet.onkoSama(pino.peekPaallimmainen(), Vakiot.TAVOITETILA)) {
             return 0; // löytyi
         }
         
         int min = 1000;
         
-        ArrayList<Integer> siirrot = Tukitoimet.selvitaMahdSiirrot(pino.peek());
+        ArrayList<Integer> siirrot = Tukitoimet.selvitaMahdSiirrot(pino.peekPaallimmainen());
              
         for (int i: siirrot) {
 
-            int[][] seuraajaNode = Tukitoimet.teeSiirto(pino.peek(), i);
+            int[][] seuraajaNode = Tukitoimet.teeSiirto(pino.peekPaallimmainen(), i);
             
             boolean eiOleJoPinossa = true;
-            
-            Iterator<int[][]> iterointi = pino.iterator();
-            while (iterointi.hasNext()) {
-                if (Tukitoimet.onkoSama(iterointi.next(), seuraajaNode)) {
+            int pinonKoko = pino.viimeisenIndeksi;
+        
+            for (int p = 1; p <= pinonKoko; p++) {
+                
+                if (Tukitoimet.onkoSama(pino.peekIndeksi(p), seuraajaNode)) {
                     eiOleJoPinossa = false;
                 }
             }
 
             if (eiOleJoPinossa) {
-                pino.push(seuraajaNode);
+                pino.lisaaPinoon(seuraajaNode);
 
                 int paluu = etsi(pino, kustannus + 1, rajaArvo);
 
@@ -110,7 +111,7 @@ public class Laskenta {
                     min = paluu;
                 }
 
-                pino.poll();
+                pino.pollPaallimmainen();
 
                 eiOleJoPinossa = true;
             }

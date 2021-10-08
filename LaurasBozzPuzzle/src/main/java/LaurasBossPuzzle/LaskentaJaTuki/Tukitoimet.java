@@ -50,27 +50,13 @@ public class Tukitoimet {
         
         Collections.shuffle(lista);
         
-        //Joo-o, tästä toteutuksesta voi antaa moukkua. Aivot jumittui juuri.
-        puzzle[0][0] = lista.get(0);
-        puzzle[0][1] = lista.get(1);    
-        puzzle[0][2] = lista.get(2);
-        puzzle[0][3] = lista.get(3); 
-        
-        puzzle[1][0] = lista.get(4);
-        puzzle[1][1] = lista.get(5);    
-        puzzle[1][2] = lista.get(6);
-        puzzle[1][3] = lista.get(7); 
-        
-        puzzle[2][0] = lista.get(8);
-        puzzle[2][1] = lista.get(9);    
-        puzzle[2][2] = lista.get(10);
-        puzzle[2][3] = lista.get(11); 
-        
-        puzzle[3][0] = lista.get(12);
-        puzzle[3][1] = lista.get(13);    
-        puzzle[3][2] = lista.get(14);
-        puzzle[3][3] = lista.get(15); 
-              
+        int osoitin = 0;
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                puzzle[x][y] = lista.get(osoitin);
+                osoitin++;
+            }
+        }     
         return puzzle;
     }
   

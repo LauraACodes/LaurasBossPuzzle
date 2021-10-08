@@ -1,7 +1,8 @@
 
 package LaurasBozzPuzzle.ui;
 
-import LaurasBossPuzzle.LaskentaJaTuki.Laskenta;
+import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
+import LaurasBossPuzzle.LaskentaJaTuki.LaskentaOmallaPinolla;
 import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
 import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
 import java.util.Scanner;
@@ -9,12 +10,12 @@ import java.util.Scanner;
 public class TextUi {
     
     private Scanner scanner;
-    Laskenta laskenta;
+    LaskentaArrayDeQuella laskenta;
     int[][] puzzle;
     
     public TextUi() {
         this.scanner = new Scanner(System.in);
-        this.laskenta = new Laskenta();
+        this.laskenta = new LaskentaArrayDeQuella();
     }
     
     public void start() {
@@ -47,7 +48,7 @@ public class TextUi {
         tulostaPuzzle(puzzle);   
         
         System.out.println("Lyhimmän reitin siirrot:");
-        Laskenta laskenta = new Laskenta();    
+        LaskentaArrayDeQuella laskenta = new LaskentaArrayDeQuella();    
         
         long ajanottoAlkaa = System.nanoTime();
         int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;               
@@ -57,10 +58,19 @@ public class TextUi {
             int[][] vaihe = laskenta.otaPinosta();
             tulostaPuzzle(vaihe);            
         } */  
-        
+        System.out.println("Ratkaisu ArrayDeQueuella");        
         System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
         System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");
-               
+
+        LaskentaOmallaPinolla laskentaOma = new LaskentaOmallaPinolla();
+        ajanottoAlkaa = System.nanoTime();
+        liikkeidenLkm = laskentaOma.idaStar(puzzle) - 1;               
+        ajanottoLoppuu = System.nanoTime();
+        kestoMs = (ajanottoLoppuu - ajanottoAlkaa) / 1000000;       
+
+        System.out.println("Ratkaisu Omalla Pinolla");        
+        System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
+        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");        
     }
     
     public void satunnaisenLuonninValikot() {

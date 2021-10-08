@@ -3,7 +3,7 @@ package LaurasBozzPuzzle.ui;
 
 import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
 import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
-import LaurasBossPuzzle.LaskentaJaTuki.Laskenta;
+import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
 import java.util.Scanner;
 
 

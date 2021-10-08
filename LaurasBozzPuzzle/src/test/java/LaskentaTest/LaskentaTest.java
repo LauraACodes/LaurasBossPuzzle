@@ -1,7 +1,7 @@
 
 package LaskentaTest;
 
-import LaurasBossPuzzle.LaskentaJaTuki.Laskenta;
+import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
 import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class LaskentaTest {
     
-    Laskenta laskenta;
+    LaskentaArrayDeQuella laskenta;
     
     public LaskentaTest() {
     }
@@ -19,7 +19,7 @@ public class LaskentaTest {
     
     @Before
     public void setUp() {
-        this.laskenta = new Laskenta();
+        this.laskenta = new LaskentaArrayDeQuella();
     }
     
     @Test
@@ -53,7 +53,7 @@ public class LaskentaTest {
         boolean eiOleYli80 = true;
         for (int i = 0; i < 1000; i++) {
             Tukitoimet tukit = new Tukitoimet();
-            Laskenta lask = new Laskenta();
+            LaskentaArrayDeQuella lask = new LaskentaArrayDeQuella();
             int[][] puzzle = tukit.luoPuzzleSekoittamalla();
             int ratkaisunPituus = lask.idaStar(puzzle);
             if (ratkaisunPituus > 80) {
