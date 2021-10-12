@@ -37,8 +37,9 @@ public class Tukitoimet {
     }
     
     /**
-     * Tämä luo Puzzlen satunnaisesti, EI TOIMI VIELÄ
-     * @return 
+     * Tämä luo Puzzlen satunnaisesti luomalla listan, jossa numerot 1-16,
+     * sekoittamalla listan ja laittamalla numerot taulukkoon.
+     * @return luotu puzzle eli kaksiulotteinen taulukko
      */
     public static int[][] luoPuzzleSatunnaisesti() {
         int[][] puzzle = new int[4][4];
