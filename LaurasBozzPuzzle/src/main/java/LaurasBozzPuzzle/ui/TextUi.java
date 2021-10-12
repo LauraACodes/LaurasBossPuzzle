@@ -5,7 +5,10 @@ import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
 import LaurasBossPuzzle.LaskentaJaTuki.LaskentaOmallaPinolla;
 import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
 import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
+import LaurasBossPuzzle.Suorituskyky.SuorituskyvynTestaus;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TextUi {
     
@@ -19,15 +22,46 @@ public class TextUi {
     }
     
     public void start() {
-        /*int[][] puzzle = {
-            {7,5,10,2}, 
-            {14,3,12,1}, 
-            {16,13,6,15}, 
-            {9,4,11,8}
-        };*/
-               
+        
         System.out.println("Tavoitetila:");
         tulostaPuzzle(Vakiot.TAVOITETILA);
+        
+        System.out.println("Haluatko...");
+        System.out.println("(1) Nähdä miten IDA* toimii käytännössä?");
+        System.out.println("(2) Testata suorituskykyä?");
+
+        // Tähän täytyy tuoda joku syötteen validointi!!
+        int valinta = scanner.nextInt();
+
+        if (valinta == 1) {
+            idaStarKaytannossa();
+        }
+
+        if (valinta == 2) {      
+            testaaSuorituskykya();
+        }
+      
+    }
+    
+    public void testaaSuorituskykya() {
+        SuorituskyvynTestaus sKyky = new SuorituskyvynTestaus();
+        sKyky.testaaSekoitettu();
+        long arrayDQKestoKA = sKyky.getADQKAAika();
+        long omaPinoKestoKA = sKyky.getOmaPKAAika();
+        System.out.println("ArrayDeQuella kesti keskimäärin " + arrayDQKestoKA + " Ms");
+        System.out.println("OmallaPinolla kesti keskimäärin " + omaPinoKestoKA + " Ms");
+        
+        try {
+            sKyky.tallennaTiedostoon();
+            System.out.println("\nTilastot on tallennettu 'suorituskykyTulokset.txt' tiedostoon.");
+        } catch (Exception ex) {
+            System.out.println("Tallennus ei onnistunut");;
+        }
+        
+    }
+    
+    
+    public void idaStarKaytannossa() {
         
         System.out.println("Haluatko...");
         System.out.println("(1) Sekoittamalla luodun lähtötilanteen?");
@@ -70,9 +104,9 @@ public class TextUi {
 
         System.out.println("Ratkaisu Omalla Pinolla");        
         System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
-        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");        
+        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");              
     }
-    
+            
     public void satunnaisenLuonninValikot() {
         
         while (true) {

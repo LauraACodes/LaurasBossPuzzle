@@ -31,7 +31,6 @@ public class LaskentaArrayDeQuella {
     public int idaStar(int[][] puzzle) {
 
         int rajaArvo = Tukitoimet.laskeManhattan(puzzle);
-        System.out.println("eka manhattan = " + rajaArvo);
         pino.add(puzzle);
         
         while (true) {
