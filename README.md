@@ -12,6 +12,9 @@
 
 [Viikko 5](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti5.md)
 
+[Viikko 6](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti6.md)
+
+
 ## Muut dokumentit
 
 [Määrittelydokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Maarittelydokumentti.md)

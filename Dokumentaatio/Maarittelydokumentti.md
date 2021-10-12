@@ -1,36 +1,33 @@
 # Määrittelydokumentti 
 
 ## Perusasiat
-**Kieli:** Java
-**Muut hallitsemani kielet:** Ei ole.
-**Dokumentointikieli:** Suomi
+**Kieli:** Java  
+**Muut hallitsemani kielet:** Ei ole.  
+**Dokumentointikieli:** Suomi  
 **Opinto-ohjelma:** TKT kandi
 
 ## Projektin algoritmit/tietorakenteet
-Lyhyimmän ratkaisun löytämiseen suunnittelen käyttäväni ohjeistuksessa  
-mainittua IDA*.
-Ensimmäisenä ajattelin kokeilla Manhattan etäisyyksiin perustuvaa  
-heuristiikkaa mutta luin jo, että muitakin tehokkaampia on. Aloitan  
-siis Manhattanilla ja katson sitten mitä muuta ehtii.
-Hieman epäselvää vielä, mitä tietorakenteita tässä tarvitaan.  
-Mielestäni tarvitsen ainakin prioriteettijonoa, johon saan laitettua eri  
-tilat ja pinoa kertomaan, mistä tultiin (ja sen avuksi HashSettiä kertomaan  
-mistä ne joissa käyty löytyy nopeasti). Siis ehkä, hyvin epävarma haisu  
-vielä. 
+Lyhyimmän ratkaisun löytämiseen käytin IDA*, heuristiikka perustuu Manhattan etäisyyksiin.
+
+Tietorakenteet:
+*Pelilauta/tilanne kaksiulotteisena taulukkona
+*Pino ArrayDeQuena ja
+*Pino itse toteutettuna kaksiulotteinen taulukko
 
 ## Ohjelman syötteet ja niiden käyttö
-Suunnittelen tekeväni graafisen käyttöliittymän ja siihen satunnais-  
-generaattorin luomaan napin painalluksesta uusi lauta.
-Käyttöliittymään tulisi myös se, miten monta askelta jouduttiin  
-ottamaan ennen kuin ratkaisu löytyi. 
+Ohjelmassa voi generoida lähtötilanteen joko sekoittamalla tai satunnaisesti.
+Satunnaisessa versiossa ennen ratkaisun etsimistä tarkistetaan, onko laudalla  
+ylipäätään ratkaisua. 
 
 ## Aika- ja tilavaativuudet
-Tähän en osaa vielä vastata.
-Toki olen oppinut jo sen, että IDA* tarvitsee vähemmän muistia koska 
-syvyyshaku.
+IDA* aikavaativuus on luokkaa O(n potenssiin m), m <= 80, koska tämä on maksimi  
+määrä siirtoja (eli polun pituus), joilla 15-puzzle on ratkaistavissa. 
 
-## Lähteet
-Valitettavasti surffasin pääosin pädillä enkä tajunnut laittaa lähteitä ylös.
-Mm. princetonin matskuja, stack overflowta ja githubista projekteja. 
-Päivitän tätä dokumenttia tulevaisuudessa!
+Tilavaatimus on O(nm).
+
+##Lähteet
+https://en.wikipedia.org/wiki/Iterative_deepening_A*
+https://www.youtube.com/watch?v=5LMXQ1NGHwU
+https://www.algorithms-and-technologies.com/iterative_deepening_a_star/java
+https://www.geeksforgeeks.org/check-instance-15-puzzle-solvable/
 
