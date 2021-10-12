@@ -241,6 +241,26 @@ public class TukitoimetTest {
     }
     
     @Test
+    public void puzzlenSatunnainenLuontiPalauttaaPuzzlenJossaJokainenNumeroKerran() {
+        int[][] luotuPuzzle = Tukitoimet.luoPuzzleSatunnaisesti();
+        boolean jokainenLoytyy = true;
+        for (int i = 1; i < 17; i++) {
+            boolean loytyikoTama = false;
+            for (int x = 0; x < 4; x++) {
+                for (int y = 0; y < 4; y++) {
+                    if (luotuPuzzle[x][y] == i) {
+                        loytyikoTama = true;
+                    }
+                }
+            }
+            if (!loytyikoTama) {
+                jokainenLoytyy = false;
+            }
+        }
+        assertTrue(jokainenLoytyy);
+    }
+    
+    @Test
     public void palauttaaTrueJosPuzzletOnSamat() {
         int[][] luotuPuzzle = Tukitoimet.luoPuzzleSekoittamalla(); 
         assertTrue(Tukitoimet.onkoSama(luotuPuzzle, luotuPuzzle));
