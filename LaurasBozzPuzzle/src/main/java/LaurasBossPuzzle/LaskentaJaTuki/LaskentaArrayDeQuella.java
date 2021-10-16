@@ -93,6 +93,7 @@ public class LaskentaArrayDeQuella {
             while (iterointi.hasNext()) {
                 if (Tukitoimet.onkoSama(iterointi.next(), seuraajaNode)) {
                     eiOleJoPinossa = false;
+                    break;
                 }
             }
 

@@ -94,9 +94,15 @@ public class LaskentaOmallaPinolla {
                 
                 if (Tukitoimet.onkoSama(pino.peekIndeksi(p), seuraajaNode)) {
                     eiOleJoPinossa = false;
+                    break;
                 }
+                
             }
-
+/*
+            if (!eiOleJoPinossa) {
+                break;
+            }*/
+            
             if (eiOleJoPinossa) {
                 pino.lisaaPinoon(seuraajaNode);
 
@@ -111,8 +117,6 @@ public class LaskentaOmallaPinolla {
                 }
 
                 pino.pollPaallimmainen();
-
-                eiOleJoPinossa = true;
             }
 
         }
