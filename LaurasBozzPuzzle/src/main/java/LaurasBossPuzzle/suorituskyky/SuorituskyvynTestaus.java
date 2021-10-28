@@ -1,9 +1,9 @@
 
-package LaurasBossPuzzle.Suorituskyky;
+package LaurasBossPuzzle.suorituskyky;
 
-import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
-import LaurasBossPuzzle.LaskentaJaTuki.LaskentaOmallaPinolla;
-import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
+import LaurasBossPuzzle.laskentaJaTuki.LaskentaArrayDeQuella;
+import LaurasBossPuzzle.laskentaJaTuki.LaskentaOmallaPinolla;
+import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
 import java.io.FileWriter;
 
 public class SuorituskyvynTestaus {

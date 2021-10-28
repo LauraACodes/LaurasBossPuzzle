@@ -1,9 +1,9 @@
 
 package LaurasBozzPuzzle.ui;
 
-import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
-import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
-import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
+import LaurasBossPuzzle.laskentaJaTuki.Vakiot;
+import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
+import LaurasBossPuzzle.laskentaJaTuki.LaskentaArrayDeQuella;
 import java.util.Scanner;
 
 

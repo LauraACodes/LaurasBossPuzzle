@@ -1,11 +1,11 @@
 
 package LaurasBozzPuzzle.ui;
 
-import LaurasBossPuzzle.LaskentaJaTuki.LaskentaArrayDeQuella;
-import LaurasBossPuzzle.LaskentaJaTuki.LaskentaOmallaPinolla;
-import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
-import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
-import LaurasBossPuzzle.Suorituskyky.SuorituskyvynTestaus;
+import LaurasBossPuzzle.laskentaJaTuki.LaskentaArrayDeQuella;
+import LaurasBossPuzzle.laskentaJaTuki.LaskentaOmallaPinolla;
+import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
+import LaurasBossPuzzle.laskentaJaTuki.Vakiot;
+import LaurasBossPuzzle.suorituskyky.SuorituskyvynTestaus;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -1,7 +1,7 @@
 package TukitoimetTest;
 
-import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
-import LaurasBossPuzzle.LaskentaJaTuki.Vakiot;
+import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
+import LaurasBossPuzzle.laskentaJaTuki.Vakiot;
 import java.util.ArrayList;
 import org.junit.Test;
 import static org.junit.Assert.*;

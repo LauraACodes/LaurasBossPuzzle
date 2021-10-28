@@ -1,5 +1,5 @@
 
-package LaurasBossPuzzle.LaskentaJaTuki;
+package LaurasBossPuzzle.laskentaJaTuki;
 
 import java.util.ArrayList;
 import java.util.Collections;

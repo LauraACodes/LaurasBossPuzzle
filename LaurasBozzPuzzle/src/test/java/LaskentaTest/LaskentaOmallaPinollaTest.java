@@ -1,8 +1,8 @@
 
 package LaskentaTest;
 
-import LaurasBossPuzzle.LaskentaJaTuki.LaskentaOmallaPinolla;
-import LaurasBossPuzzle.LaskentaJaTuki.Tukitoimet;
+import LaurasBossPuzzle.laskentaJaTuki.LaskentaOmallaPinolla;
+import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
