@@ -1,15 +1,18 @@
 # Testausdokumentti
 
-## Yksikkötestauksen kattavuusraportti##
+## Yksikkötestauksen kattavuusraportti
+
+![CCkuva](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/CCkuva.png)
+Tarkempi kattavuusraportti löytyy alta:
 
 [![codecov](https://codecov.io/gh/LauraACodes/LaurasBossPuzzle/branch/main/graph/badge.svg?token=FDOVVTAKT1)](https://codecov.io/gh/LauraACodes/LaurasBossPuzzle)
 
 ## Mitä testattiin?
 
 ### Yksikkötestit
-Algoritmin oikea toiminta perustuu pitkälti Tukitoiminnot -luokasta löytyviin metodien oikeaan toimintaan.
+Algoritmin oikea toiminta perustuu pitkälti Tuki -luokasta löytyviin metodien oikeaan toimintaan.
 
-Tukitoiminnot-luokan metodeja testattiinkin kattavasti  mm. osaavatko metodit...
+Tuki-luokan metodeja testattiinkin kattavasti  mm. osaavatko metodit...
 - ...selvittää mitkä siirrot pelilaudalla ovat mahdollisia ja mitkä ei.
 - ...toteuttaa siirrot oikein joka suuntaan.
 - ...laskea Manhattan etäisyydet oikein.
