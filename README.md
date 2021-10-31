@@ -25,6 +25,6 @@ Ohjelma toteuttaa 15-puzzlen ratkaisijan IDA*-algoritmillä Manhattan-heuristiik
 
 [Testausdokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Testausdokumentti.md)
 
-[Toteutusdokumentti]((https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Toteutusdokumentti.md)
+[Toteutusdokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Toteutusdokumentti.md)
 
 ![workflow](https://github.com/LauraACodes/LaurasBossPuzzle/workflows/Java%20CI%20with%20Gradle/badge.svg) [![codecov](https://codecov.io/gh/LauraACodes/LaurasBossPuzzle/branch/main/graph/badge.svg?token=FDOVVTAKT1)](https://codecov.io/gh/LauraACodes/LaurasBossPuzzle)
