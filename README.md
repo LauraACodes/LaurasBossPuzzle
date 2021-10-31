@@ -1,5 +1,9 @@
 # Lauras BossPuzzle
 
+Ohjelma toteuttaa 15-puzzlen ratkaisijan IDA*-algoritmillä Manhattan-heuristiikkaa hyödyntäen.
+
+[Katso käyttöohjeet täältä](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/kayttohjeet.md)
+
 ## Viikkoraportit
 
 [Viikko 1](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Viikkoraportti1.md)
@@ -21,5 +25,6 @@
 
 [Testausdokumentti](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Testausdokumentti.md)
 
+[Toteutusdokumentti]((https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/Toteutusdokumentti.md)
 
 ![workflow](https://github.com/LauraACodes/LaurasBossPuzzle/workflows/Java%20CI%20with%20Gradle/badge.svg) [![codecov](https://codecov.io/gh/LauraACodes/LaurasBossPuzzle/branch/main/graph/badge.svg?token=FDOVVTAKT1)](https://codecov.io/gh/LauraACodes/LaurasBossPuzzle)
