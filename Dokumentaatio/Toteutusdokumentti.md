@@ -4,7 +4,7 @@
 
 Alta löytyy ohjelman rakenne ja luokat
 
-![Rakenne](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/rakenne.png
+![Rakenne](https://github.com/LauraACodes/LaurasBossPuzzle/blob/main/Dokumentaatio/rakenne.png)
 
 ## Aika- ja tilavaativuudet
 IDA* aikavaativuus on luokkaa O(n potenssiin m), m <= 80, koska tämä on maksimi määrä siirtoja (eli polun pituus), joilla 15-puzzle on ratka>
