@@ -1,17 +1,15 @@
 
 package LaskentaTest;
 
-import LaurasBossPuzzle.laskentaJaTuki.LaskentaArrayDeQuella;
-import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
+import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarArrayDeQuella;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class LaskentaArrayDeQueTest {
     
-    LaskentaArrayDeQuella laskenta;
+    IDAStarArrayDeQuella laskenta;
     
     public LaskentaArrayDeQueTest() {
     }
@@ -19,7 +17,7 @@ public class LaskentaArrayDeQueTest {
     
     @Before
     public void setUp() {
-        this.laskenta = new LaskentaArrayDeQuella();
+        this.laskenta = new IDAStarArrayDeQuella();
     }
     
     @Test

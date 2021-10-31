@@ -1,25 +1,19 @@
 
-package LaurasBossPuzzle.laskentaJaTuki;
+package LaurasBozzPuzzle.LaskentaJaTuki;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
-public class LaskentaArrayDeQuella {
+/**
+ * Luokka sisältää ArrayDeQueta hyödyntävän IDA* algoritmin toteutuksen.
+ */
+public class IDAStarArrayDeQuella {
     
     ArrayDeque pino;
     
-    public LaskentaArrayDeQuella() {
+    public IDAStarArrayDeQuella() {
         this.pino = new ArrayDeque<int[][]>();
-    }
-    
-    /**
-     * Metodi palauttaa ja poistaa pinon viimeisimmän puzzlen eli vanhimman pelitilanteen
-     * @return pinon alimmainen puzzle eli pelitilanne
-     */ 
-    public int[][] otaPinosta() {
-        return (int[][]) pino.pollLast();
     }
     
     /**
@@ -121,4 +115,11 @@ public class LaskentaArrayDeQuella {
         
     }
 
+    /**
+     * Metodi palauttaa ja poistaa pinon viimeisimmän puzzlen eli vanhimman pelitilanteen
+     * @return pinon alimmainen puzzle eli pelitilanne
+     */ 
+    public int[][] otaPinosta() {
+        return (int[][]) pino.pollLast();
+    }
 }

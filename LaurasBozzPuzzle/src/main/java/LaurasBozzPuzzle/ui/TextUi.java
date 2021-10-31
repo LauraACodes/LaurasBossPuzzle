@@ -1,39 +1,38 @@
 
 package LaurasBozzPuzzle.ui;
 
-import LaurasBossPuzzle.laskentaJaTuki.LaskentaArrayDeQuella;
-import LaurasBossPuzzle.laskentaJaTuki.LaskentaOmallaPinolla;
-import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
-import LaurasBossPuzzle.laskentaJaTuki.Vakiot;
-import LaurasBossPuzzle.suorituskyky.SuorituskyvynTestaus;
+import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarArrayDeQuella;
+import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarOmallaPinolla;
+import LaurasBozzPuzzle.LaskentaJaTuki.Tukitoimet;
+import LaurasBozzPuzzle.LaskentaJaTuki.Vakiot;
+import LaurasBozzPuzzle.Suorituskyky.SuorituskyvynTestaus;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TextUi {
     
     private Scanner scanner;
-    LaskentaArrayDeQuella laskenta;
+    IDAStarArrayDeQuella laskenta;
     int[][] puzzle;
     
     public TextUi() {
         this.scanner = new Scanner(System.in);
-        this.laskenta = new LaskentaArrayDeQuella();
+        this.laskenta = new IDAStarArrayDeQuella();
     }
     
     public void start() {
         
-        System.out.println("Tavoitetila:");
-        tulostaPuzzle(Vakiot.TAVOITETILA);
-        
+        System.out.println("Tervetuloa 15-puzzlen ratkaisijaan!\n");
         System.out.println("Haluatko...");
         System.out.println("(1) Nähdä miten IDA* toimii käytännössä?");
-        System.out.println("(2) Testata suorituskykyä?");
+        System.out.println("(2) Testata ratkaisijan suorituskykyä?");
 
-        // Tähän täytyy tuoda joku syötteen validointi!!
         int valinta = scanner.nextInt();
 
         if (valinta == 1) {
+            System.out.println("Tavoitetila:");
+            tulostaPuzzle(Vakiot.TAVOITETILA);
+            
+            lahtotilanteenLuonti();
             idaStarKaytannossa();
         }
 
@@ -43,31 +42,41 @@ public class TextUi {
       
     }
     
-    public void testaaSuorituskykya() {
-        SuorituskyvynTestaus sKyky = new SuorituskyvynTestaus();
-        sKyky.testaaSekoitettu();
-        long arrayDQKestoKA = sKyky.getADQKAAika();
-        long omaPinoKestoKA = sKyky.getOmaPKAAika();
-        System.out.println("ArrayDeQuella kesti keskimäärin " + arrayDQKestoKA + " Ms");
-        System.out.println("OmallaPinolla kesti keskimäärin " + omaPinoKestoKA + " Ms");
+    public void idaStarKaytannossa() {
+
+        System.out.println("Ratkaisija etsii ratkaisun IDA*-algoritmilla hyödyntäen heuristiikkana Manhattan-etäisyyksiä. ");
+        System.out.println("Ensin ratkaisu etsitään hyödyntäen Javan valmista ArrayDeQueata.");
+        System.out.println("Tämän jälkeen ratkaisu etsitään hyödyntäen Lauran rakentamaa omaa pinoa.\n");
         
-        try {
-            sKyky.tallennaTiedostoon();
-            System.out.println("\nTilastot on tallennettu 'suorituskykyTulokset.txt' tiedostoon.");
-        } catch (Exception ex) {
-            System.out.println("Tallennus ei onnistunut");;
-        }
+        IDAStarArrayDeQuella laskenta = new IDAStarArrayDeQuella();    
         
+        long ajanottoAlkaa = System.nanoTime();
+        int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;               
+        long ajanottoLoppuu = System.nanoTime();
+        long kestoMs = (ajanottoLoppuu - ajanottoAlkaa) / 1000000;
+
+        System.out.println("Ratkaisu ArrayDeQueuella");        
+        System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
+        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia\n");
+
+        IDAStarOmallaPinolla laskentaOma = new IDAStarOmallaPinolla();
+        ajanottoAlkaa = System.nanoTime();
+        liikkeidenLkm = laskentaOma.idaStar(puzzle) - 1;               
+        ajanottoLoppuu = System.nanoTime();
+        kestoMs = (ajanottoLoppuu - ajanottoAlkaa) / 1000000;       
+
+        System.out.println("Ratkaisu Omalla Pinolla");        
+        System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
+        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia\n");   
+        
+        siirtojenNayttaminen(laskenta, liikkeidenLkm);
     }
     
-    
-    public void idaStarKaytannossa() {
-        
+    public void lahtotilanteenLuonti() {
         System.out.println("Haluatko...");
         System.out.println("(1) Sekoittamalla luodun lähtötilanteen?");
         System.out.println("(2) Satunnaisesti luodun lähtötilanteen?");
 
-        // Tähän täytyy tuoda joku syötteen validointi!!
         int valinta = scanner.nextInt();
 
         if (valinta == 1) {
@@ -79,32 +88,7 @@ public class TextUi {
         }
 
         System.out.println("Generoitu lähtötilanne:");
-        tulostaPuzzle(puzzle);   
-        
-        System.out.println("Lyhimmän reitin siirrot:");
-        LaskentaArrayDeQuella laskenta = new LaskentaArrayDeQuella();    
-        
-        long ajanottoAlkaa = System.nanoTime();
-        int liikkeidenLkm = laskenta.idaStar(puzzle) - 1;               
-        long ajanottoLoppuu = System.nanoTime();
-        long kestoMs = (ajanottoLoppuu - ajanottoAlkaa) / 1000000;
-        /*for (int i=0; i<liikkeidenLkm+2; i++) {
-            int[][] vaihe = laskenta.otaPinosta();
-            tulostaPuzzle(vaihe);            
-        } */  
-        System.out.println("Ratkaisu ArrayDeQueuella");        
-        System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
-        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");
-
-        LaskentaOmallaPinolla laskentaOma = new LaskentaOmallaPinolla();
-        ajanottoAlkaa = System.nanoTime();
-        liikkeidenLkm = laskentaOma.idaStar(puzzle) - 1;               
-        ajanottoLoppuu = System.nanoTime();
-        kestoMs = (ajanottoLoppuu - ajanottoAlkaa) / 1000000;       
-
-        System.out.println("Ratkaisu Omalla Pinolla");        
-        System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
-        System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia");              
+        tulostaPuzzle(puzzle);         
     }
             
     public void satunnaisenLuonninValikot() {
@@ -126,6 +110,39 @@ public class TextUi {
        
     }
     
+    public void siirtojenNayttaminen(IDAStarArrayDeQuella laskenta, int liikkeidenLkm) {
+        
+        System.out.println("Haluatko nähdä siirrot?");
+        System.out.println("(1) Kyllä haluan");
+        System.out.println("(2) En halua");
+
+        int haluaakoSiirrot = scanner.nextInt();
+        
+        if (haluaakoSiirrot == 1) {
+            for (int i = 0; i < liikkeidenLkm + 2; i++) {
+                int[][] vaihe = laskenta.otaPinosta();
+                tulostaPuzzle(vaihe);            
+            }   
+        }    
+    }
+        
+    public void testaaSuorituskykya() {
+        SuorituskyvynTestaus sKyky = new SuorituskyvynTestaus();
+        sKyky.testaaSekoitettu();
+        long arrayDQKestoKA = sKyky.getADQKAAika();
+        long omaPinoKestoKA = sKyky.getOmaPKAAika();
+        System.out.println("ArrayDeQuella kesti keskimäärin " + arrayDQKestoKA + " Ms");
+        System.out.println("OmallaPinolla kesti keskimäärin " + omaPinoKestoKA + " Ms");
+        
+        try {
+            sKyky.tallennaTiedostoon();
+            System.out.println("\nTilastot on tallennettu 'suorituskykyTulokset.txt' tiedostoon.");
+        } catch (Exception ex) {
+            System.out.println("Tallennus ei onnistunut");;
+        }
+        
+    }
+    
     public static void tulostaPuzzle(int[][] puzzle) {
             
         StringBuilder stringB = new StringBuilder("");
@@ -138,7 +155,6 @@ public class TextUi {
                 }
             }
         }
-        System.out.println(stringB);
-                   
+        System.out.println(stringB);    
     }
 }

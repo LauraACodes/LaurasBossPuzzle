@@ -1,17 +1,17 @@
 
-package LaurasBossPuzzle.laskentaJaTuki;
+package LaurasBozzPuzzle.LaskentaJaTuki;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Iterator;
 
-
-public class LaskentaOmallaPinolla {
+/**
+ * Luokka sisältää OmaaPinoa hyödyntävän IDA* algoritmin toteutuksen.
+ */
+public class IDAStarOmallaPinolla {
     
-    Pino pino;
+    OmaPino pino;
     
-    public LaskentaOmallaPinolla() {
-        this.pino = new Pino();
+    public IDAStarOmallaPinolla() {
+        this.pino = new OmaPino();
     }
     
     /**
@@ -67,7 +67,7 @@ public class LaskentaOmallaPinolla {
      * @return pinon päällimmäisen kokonaiskustanuksen, nollan tai pienimmän 
      * seuraavien mahdollisten siirtojen kokonaiskustannuksen. 
      */
-    public int etsi(Pino pino, int kustannus, int rajaArvo) {
+    public int etsi(OmaPino pino, int kustannus, int rajaArvo) {
        
         int kokonaisKustannus = kustannus + Tukitoimet.laskeManhattan(pino.peekPaallimmainen());
 

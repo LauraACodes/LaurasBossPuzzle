@@ -1,17 +1,15 @@
 
 package LaskentaTest;
 
-import LaurasBossPuzzle.laskentaJaTuki.LaskentaOmallaPinolla;
-import LaurasBossPuzzle.laskentaJaTuki.Tukitoimet;
+import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarOmallaPinolla;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class LaskentaOmallaPinollaTest {
     
-    LaskentaOmallaPinolla laskenta;
+    IDAStarOmallaPinolla laskenta;
     
     public LaskentaOmallaPinollaTest() {
     }
@@ -19,7 +17,7 @@ public class LaskentaOmallaPinollaTest {
     
     @Before
     public void setUp() {
-        this.laskenta = new LaskentaOmallaPinolla();
+        this.laskenta = new IDAStarOmallaPinolla();
     }
     
     @Test

@@ -14,8 +14,6 @@ repositories {
 dependencies {
     testImplementation 'junit:junit:4.13'
     implementation 'com.google.guava:guava:29.0-jre'
-    //implementation('org.junit.jupiter:junit-jupiter:5.4.2')
-    //testImplementation('org.junit.jupiter:junit-jupiter:5.4.2')
 }
 
 test {
@@ -24,15 +22,15 @@ test {
 
 jacocoTestReport {
     reports {
-        xml.enabled = true
-        html.enabled = true
+        xml.required = true
+        html.required = true
     }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
             fileTree(dir: it, exclude: [
-                'LaurasBozzPuzzle/ui/**',
-                'LaurasBozzPuzzle/suorituskyky/**'
-            ])
+                "LaurasBozzPuzzle/ui/**", 
+                "LaurasBozzPuzzle/Suorituskyky/**"        
+                ])
         }))
     }
 }

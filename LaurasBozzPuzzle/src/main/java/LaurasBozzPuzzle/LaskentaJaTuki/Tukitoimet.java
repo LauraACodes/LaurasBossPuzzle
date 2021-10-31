@@ -1,12 +1,12 @@
 
-package LaurasBossPuzzle.laskentaJaTuki;
+package LaurasBozzPuzzle.LaskentaJaTuki;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
 /**
- * Tukitoimet-luokka tarjoaa Laskennan tarvitsemat työkalut,
+ * Tukitoimet-luokka tarjoaa IDA*laskennan tarvitsemat työkalut,
  * mm luo puzzlen, selvittää mitkä siirrot ovat mahdollisia ja laskee herustiikat.
  */
 public class Tukitoimet {
@@ -115,7 +115,7 @@ public class Tukitoimet {
      */
     public static ArrayList<Integer> selvitaMahdSiirrot(int[][] puzzle) {
 
-        int[] tyhjanXY= palautaTyhja(puzzle);
+        int[] tyhjanXY = palautaTyhja(puzzle);
         int tyhjanX = tyhjanXY[0];
         int tyhjanY = tyhjanXY[1];
         
@@ -175,7 +175,7 @@ public class Tukitoimet {
             }
         }
         
-        int[] tyhjanXY= palautaTyhja(puzzle);
+        int[] tyhjanXY = palautaTyhja(puzzle);
         int tyhjanX = tyhjanXY[0];
         int tyhjanY = tyhjanXY[1];
      

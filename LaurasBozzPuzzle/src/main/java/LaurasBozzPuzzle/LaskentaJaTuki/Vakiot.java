@@ -1,6 +1,8 @@
+package LaurasBozzPuzzle.LaskentaJaTuki;
 
-package LaurasBossPuzzle.laskentaJaTuki;
-
+/**
+ * Luokasta löytyy muiden luokkien metodien tarvitsemat tavoitetilat ja -koordinaatit.
+ */
 public class Vakiot {
     
     public static int[][] TAVOITEKOORD = {

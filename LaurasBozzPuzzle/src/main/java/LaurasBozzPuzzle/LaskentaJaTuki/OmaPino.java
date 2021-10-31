@@ -1,11 +1,11 @@
 
-package LaurasBossPuzzle.laskentaJaTuki;
+package LaurasBozzPuzzle.LaskentaJaTuki;
 
-public class Pino {
+public class OmaPino {
     int[][] pino;
     int viimeisenIndeksi;
     
-    public Pino() {
+    public OmaPino() {
         this.pino = new int[1000][16];
         this.viimeisenIndeksi = 0;
     }
