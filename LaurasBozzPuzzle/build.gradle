@@ -40,3 +40,9 @@ check.dependsOn jacocoTestReport
 run {
     standardInput = System.in
 }
+
+jar {
+    manifest {
+        attributes "Main-Class": "LaurasBozzPuzzle.ui/Main"
+    }
+}
