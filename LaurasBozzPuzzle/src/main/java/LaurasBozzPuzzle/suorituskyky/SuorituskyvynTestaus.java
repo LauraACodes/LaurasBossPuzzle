@@ -1,9 +1,9 @@
 
-package LaurasBozzPuzzle.Suorituskyky;
+package LaurasBozzPuzzle.suorituskyky;
 
-import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarArrayDeQuella;
-import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarOmallaPinolla;
-import LaurasBozzPuzzle.LaskentaJaTuki.Tukitoimet;
+import LaurasBozzPuzzle.laskenta.IDAStarArrayDeQuella;
+import LaurasBozzPuzzle.laskenta.IDAStarOmallaPinolla;
+import LaurasBozzPuzzle.tuki.Tukitoimet;
 import java.io.FileWriter;
 
 /**

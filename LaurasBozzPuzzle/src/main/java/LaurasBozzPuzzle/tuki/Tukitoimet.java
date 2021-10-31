@@ -1,5 +1,5 @@
 
-package LaurasBozzPuzzle.LaskentaJaTuki;
+package LaurasBozzPuzzle.tuki;
 
 import java.util.ArrayList;
 import java.util.Collections;

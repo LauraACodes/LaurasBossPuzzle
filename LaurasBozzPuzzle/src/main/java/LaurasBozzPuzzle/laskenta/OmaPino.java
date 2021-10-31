@@ -1,6 +1,10 @@
 
-package LaurasBozzPuzzle.LaskentaJaTuki;
+package LaurasBozzPuzzle.laskenta;
 
+/**
+ * Luokka toteuttaa itse rakennetun version Pinosta.
+ * @author andlaura
+ */
 public class OmaPino {
     int[][] pino;
     int viimeisenIndeksi;
@@ -10,6 +14,10 @@ public class OmaPino {
         this.viimeisenIndeksi = 0;
     }
     
+    /**
+     * Metodi lisää pelitilanteen pinoon.
+     * @param puzzle 
+     */
     public void lisaaPinoon(int[][] puzzle) {
         
         viimeisenIndeksi++;
@@ -21,21 +29,39 @@ public class OmaPino {
             }
         }       
     }
-    
+   
+    /**
+     * Metodi palauttaa pinon päällimmäisen ja poistaa sen.
+     * @return 
+     */
     public int[][] pollPaallimmainen() {
         int[][] puzzle = pinostaPuzzleksi(viimeisenIndeksi);
         viimeisenIndeksi--;
         return puzzle;        
     }
 
+    /**
+     * Metodi palauttaa pinon päällimmäisen, ei poista.
+     * @return 
+     */
     public int[][] peekPaallimmainen() {
         return pinostaPuzzleksi(viimeisenIndeksi);
     }
     
+    /**
+     * Metodi palauttaa annetulla indeksillä pinossa olevan puzzlen.
+     * @param i
+     * @return puzzle
+     */
     public int[][] peekIndeksi(int i) {
         return pinostaPuzzleksi(i);
     }
     
+    /**
+     * Metodi palauttaa tietyn indeksin puzzlen.
+     * @param pinonIndeksi
+     * @return 
+     */
     public int[][] pinostaPuzzleksi(int pinonIndeksi) {
         int[][] puzzle = new int[4][4];
         int osoitin = 0;
@@ -49,6 +75,10 @@ public class OmaPino {
         return puzzle;
     }
     
+    /**
+     * Metodi palauttaa pinon koon tietyllä hetkellä
+     * @return pinon koko eli viimeisimmänIndeksin
+     */
     public int getPinonkoko() {
         return viimeisenIndeksi;
     }

@@ -1,7 +1,7 @@
 
 package LaskentaTest;
 
-import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarOmallaPinolla;
+import LaurasBozzPuzzle.laskenta.IDAStarOmallaPinolla;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package LaurasBozzPuzzle.LaskentaJaTuki;
+package LaurasBozzPuzzle.tuki;
 
 /**
  * Luokasta löytyy muiden luokkien metodien tarvitsemat tavoitetilat ja -koordinaatit.

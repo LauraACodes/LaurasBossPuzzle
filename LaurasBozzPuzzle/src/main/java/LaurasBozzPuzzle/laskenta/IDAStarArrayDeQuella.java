@@ -1,25 +1,21 @@
 
-package LaurasBozzPuzzle.LaskentaJaTuki;
+package LaurasBozzPuzzle.laskenta;
 
+import LaurasBozzPuzzle.tuki.Vakiot;
+import LaurasBozzPuzzle.tuki.Tukitoimet;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
- * Luokka sisältää OmaaPinoa hyödyntävän IDA* algoritmin toteutuksen.
+ * Luokka sisältää ArrayDeQueta hyödyntävän IDA* algoritmin toteutuksen.
  */
-public class IDAStarOmallaPinolla {
+public class IDAStarArrayDeQuella {
     
-    OmaPino pino;
+    ArrayDeque pino;
     
-    public IDAStarOmallaPinolla() {
-        this.pino = new OmaPino();
-    }
-    
-    /**
-     * Metodi palauttaa ja poistaa pinon viimeisimmän puzzlen eli vanhimman pelitilanteen
-     * @return pinon alimmainen puzzle eli pelitilanne
-     */ 
-    public int[][] otaPinosta() {
-        return (int[][]) pino.pollPaallimmainen();
+    public IDAStarArrayDeQuella() {
+        this.pino = new ArrayDeque<int[][]>();
     }
     
     /**
@@ -31,13 +27,13 @@ public class IDAStarOmallaPinolla {
     public int idaStar(int[][] puzzle) {
 
         int rajaArvo = Tukitoimet.laskeManhattan(puzzle);
-        pino.lisaaPinoon(puzzle);
+        pino.add(puzzle);
         
         while (true) {
             int paluu = etsi(pino, 0, rajaArvo);
      
             if (paluu == 0) {
-                return pino.viimeisenIndeksi - 1;
+                return pino.size() - 1;
             }
             
             if (paluu == 1000) {
@@ -67,44 +63,38 @@ public class IDAStarOmallaPinolla {
      * @return pinon päällimmäisen kokonaiskustanuksen, nollan tai pienimmän 
      * seuraavien mahdollisten siirtojen kokonaiskustannuksen. 
      */
-    public int etsi(OmaPino pino, int kustannus, int rajaArvo) {
+    public int etsi(ArrayDeque<int[][]> pino, int kustannus, int rajaArvo) {
        
-        int kokonaisKustannus = kustannus + Tukitoimet.laskeManhattan(pino.peekPaallimmainen());
+        int kokonaisKustannus = kustannus + Tukitoimet.laskeManhattan(pino.peek());
 
         if (kokonaisKustannus > rajaArvo) {
             return kokonaisKustannus;
         }
         
-        if (Tukitoimet.onkoSama(pino.peekPaallimmainen(), Vakiot.TAVOITETILA)) {
+        if (Tukitoimet.onkoSama(pino.peek(), Vakiot.TAVOITETILA)) {
             return 0; // löytyi
         }
         
         int min = 1000;
         
-        ArrayList<Integer> siirrot = Tukitoimet.selvitaMahdSiirrot(pino.peekPaallimmainen());
+        ArrayList<Integer> siirrot = Tukitoimet.selvitaMahdSiirrot(pino.peek());
              
         for (int i: siirrot) {
 
-            int[][] seuraajaNode = Tukitoimet.teeSiirto(pino.peekPaallimmainen(), i);
+            int[][] seuraajaNode = Tukitoimet.teeSiirto(pino.peek(), i);
             
             boolean eiOleJoPinossa = true;
-            int pinonKoko = pino.viimeisenIndeksi;
-        
-            for (int p = 1; p <= pinonKoko; p++) {
-                
-                if (Tukitoimet.onkoSama(pino.peekIndeksi(p), seuraajaNode)) {
+            
+            Iterator<int[][]> iterointi = pino.iterator();
+            while (iterointi.hasNext()) {
+                if (Tukitoimet.onkoSama(iterointi.next(), seuraajaNode)) {
                     eiOleJoPinossa = false;
                     break;
                 }
-                
             }
-/*
-            if (!eiOleJoPinossa) {
-                break;
-            }*/
-            
+
             if (eiOleJoPinossa) {
-                pino.lisaaPinoon(seuraajaNode);
+                pino.push(seuraajaNode);
 
                 int paluu = etsi(pino, kustannus + 1, rajaArvo);
 
@@ -116,7 +106,9 @@ public class IDAStarOmallaPinolla {
                     min = paluu;
                 }
 
-                pino.pollPaallimmainen();
+                pino.poll();
+
+                eiOleJoPinossa = true;
             }
 
         }
@@ -125,4 +117,11 @@ public class IDAStarOmallaPinolla {
         
     }
 
+    /**
+     * Metodi palauttaa ja poistaa pinon viimeisimmän puzzlen eli vanhimman pelitilanteen
+     * @return pinon alimmainen puzzle eli pelitilanne
+     */ 
+    public int[][] otaPinosta() {
+        return (int[][]) pino.pollLast();
+    }
 }

@@ -1,24 +1,30 @@
 
 package LaurasBozzPuzzle.ui;
 
-import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarArrayDeQuella;
-import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarOmallaPinolla;
-import LaurasBozzPuzzle.LaskentaJaTuki.Tukitoimet;
-import LaurasBozzPuzzle.LaskentaJaTuki.Vakiot;
-import LaurasBozzPuzzle.Suorituskyky.SuorituskyvynTestaus;
+import LaurasBozzPuzzle.laskenta.IDAStarArrayDeQuella;
+import LaurasBozzPuzzle.laskenta.IDAStarOmallaPinolla;
+import LaurasBozzPuzzle.tuki.Tukitoimet;
+import LaurasBozzPuzzle.tuki.Vakiot;
+import LaurasBozzPuzzle.suorituskyky.SuorituskyvynTestaus;
 import java.util.Scanner;
 
+/**
+ * Luokassa on ohjelman käyttöliittymän toiminnot
+ */
 public class TextUi {
     
     private Scanner scanner;
-    IDAStarArrayDeQuella laskenta;
     int[][] puzzle;
     
     public TextUi() {
         this.scanner = new Scanner(System.in);
-        this.laskenta = new IDAStarArrayDeQuella();
     }
     
+    /**
+     * Metodi käynnistää ohjelman ja kysyy, haluaako käyttäjä
+     * nähdä miten IDA* toimii vai
+     * testata ratkaisijan suorituskykyä.
+     */
     public void start() {
         
         System.out.println("Tervetuloa 15-puzzlen ratkaisijaan!\n");
@@ -32,8 +38,8 @@ public class TextUi {
             System.out.println("Tavoitetila:");
             tulostaPuzzle(Vakiot.TAVOITETILA);
             
-            lahtotilanteenLuonti();
-            idaStarKaytannossa();
+            lahtoTilanteenLuonti();
+            idaStarKomennot();
         }
 
         if (valinta == 2) {      
@@ -41,8 +47,11 @@ public class TextUi {
         }
       
     }
-    
-    public void idaStarKaytannossa() {
+    /**
+     * Metodi hoitaa käytännössä controllerin tehtäviä kutsumalla eri
+     * ratkaisijoita ja kertoo niiden tulokset.
+     */
+    public void idaStarKomennot() {
 
         System.out.println("Ratkaisija etsii ratkaisun IDA*-algoritmilla hyödyntäen heuristiikkana Manhattan-etäisyyksiä. ");
         System.out.println("Ensin ratkaisu etsitään hyödyntäen Javan valmista ArrayDeQueata.");
@@ -69,10 +78,14 @@ public class TextUi {
         System.out.println("Siirtoja yhteensä:" + liikkeidenLkm);        
         System.out.println("Ratkaisun etsiminen kesti: " + kestoMs + " millisekunttia\n");   
         
-        siirtojenNayttaminen(laskenta, liikkeidenLkm);
+        naytaSiirrot(laskenta, liikkeidenLkm);
     }
-    
-    public void lahtotilanteenLuonti() {
+    /**
+     * Metodi kysyy haluaako käyttäjä sekoittamalla vai satunnaisesti 
+     * luodun lähtötilanteen ja kutsuu vastaavia metodeja luomaan 
+     * löhtötilanteen. Lopussa metodi tulostaa sen.
+     */
+    public void lahtoTilanteenLuonti() {
         System.out.println("Haluatko...");
         System.out.println("(1) Sekoittamalla luodun lähtötilanteen?");
         System.out.println("(2) Satunnaisesti luodun lähtötilanteen?");
@@ -90,7 +103,11 @@ public class TextUi {
         System.out.println("Generoitu lähtötilanne:");
         tulostaPuzzle(puzzle);         
     }
-            
+    
+    /**
+     * Metodi kutsuu satunnaisen pelilaudan luovaa metodia niin kauan
+     * kunnes ratkaistavissa oleva pelilauta onnistutaan luomaan.
+     */
     public void satunnaisenLuonninValikot() {
         
         while (true) {
@@ -110,7 +127,13 @@ public class TextUi {
        
     }
     
-    public void siirtojenNayttaminen(IDAStarArrayDeQuella laskenta, int liikkeidenLkm) {
+    /**
+     * Metodi näyttää pyydettäessä ratkaisun eri siirrot.
+     * 
+     * @param laskenta
+     * @param liikkeidenLkm 
+     */
+    public void naytaSiirrot(IDAStarArrayDeQuella laskenta, int liikkeidenLkm) {
         
         System.out.println("Haluatko nähdä siirrot?");
         System.out.println("(1) Kyllä haluan");
@@ -125,7 +148,10 @@ public class TextUi {
             }   
         }    
     }
-        
+    
+    /**
+     * Metodi käynnistää ja raporoi suorituskyvyn testauksen tulokset.
+     */
     public void testaaSuorituskykya() {
         SuorituskyvynTestaus sKyky = new SuorituskyvynTestaus();
         sKyky.testaaSekoitettu();
@@ -143,6 +169,10 @@ public class TextUi {
         
     }
     
+    /**
+     * Metodi tulostaa sille annetun pelilaudan
+     * @param puzzle 
+     */
     public static void tulostaPuzzle(int[][] puzzle) {
             
         StringBuilder stringB = new StringBuilder("");

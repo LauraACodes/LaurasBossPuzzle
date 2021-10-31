@@ -1,7 +1,7 @@
 
 package LaskentaTest;
 
-import LaurasBozzPuzzle.LaskentaJaTuki.IDAStarArrayDeQuella;
+import LaurasBozzPuzzle.laskenta.IDAStarArrayDeQuella;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
